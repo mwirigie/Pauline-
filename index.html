@@ -1,0 +1,336 @@
+  <!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>To My Love, Fina ❤️</title> 
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;display=swap" rel="stylesheet"> 
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #ffe4e6;
+      color: #5b0b22;
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      background: linear-gradient(to right, #ff80ab, #ff1744);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      animation: fadeIn 2s ease-in-out;
+      z-index: 1;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .heart {
+      position: absolute;
+      color: #ff80ab;
+      animation: floatHearts 6s infinite ease-in-out;
+      opacity: 0.8;
+      font-size: 1.5rem;
+    }
+    @keyframes floatHearts {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+    }
+    .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .heart:nth-child(2) { left: 30%; animation-delay: 1s; }
+    .heart:nth-child(3) { left: 50%; animation-delay: 2s; }
+    .heart:nth-child(4) { left: 70%; animation-delay: 3s; }
+    .heart:nth-child(5) { left: 90%; animation-delay: 4s; }
+    .sparkle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkleAnim 3s infinite ease-in-out;
+      z-index: 0;
+    }
+    @keyframes sparkleAnim {
+      0% { transform: scale(0.5) translateY(0); opacity: 1; }
+      100% { transform: scale(1.5) translateY(-100px); opacity: 0; }
+    }
+    .sparkle:nth-child(6) { left: 20%; animation-delay: 0s; }
+    .sparkle:nth-child(7) { left: 40%; animation-delay: 1s; }
+    .sparkle:nth-child(8) { left: 60%; animation-delay: 2s; }
+    .sparkle:nth-child(9) { left: 80%; animation-delay: 1.5s; }
+    .sparkle:nth-child(10) { left: 50%; animation-delay: 2.5s; }
+
+    .falling-heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      opacity: 0.9;
+      animation: fall 10s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    iframe {
+      border: none;
+      border-radius: 12px;
+      width: 100%;
+    }
+    video {
+      border-radius: 12px;
+      width: 100%;
+      max-height: 300px;
+      outline: none;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #db2777;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 5px;
+    }
+    button:hover {
+      background-color: #be185d;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .gallery a {
+      display: block;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      height: 120px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .caption {
+      font-size: 0.8rem;
+      margin-top: 5px;
+      color: #6b7280;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.3s;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+    .lightbox:target { display: flex; }
+    .close-lightbox {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 30px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style> 
+ </head> 
+ <body> 
+  <audio autoplay loop hidden> 
+   <source src="https://cdn.pixabay.com/audio/2022/12/07/audio_d8e0f51e82.mp3" type="audio/mpeg"> 
+  </audio> 
+  <div class="hearts"> 
+   <div class="heart">💖</div> 
+   <div class="heart">❤️</div> 
+   <div class="heart">💘</div> 
+   <div class="heart">💕</div> 
+   <div class="heart">💞</div> 
+   <div class="sparkle"></div> 
+   <div class="sparkle"></div> 
+   <div class="sparkle"></div> 
+   <div class="sparkle"></div> 
+   <div class="sparkle"></div> 
+  </div> 
+  <div id="falling-hearts-container"></div> 
+  <h1>To My Love, Fina ❤️</h1> 
+  <p>A little place on the internet, just for you.</p> 
+  <div class="card"> 
+   <h2>Our Story</h2> 
+   <ul style="text-align: left;"> 
+    <li>✨ From the moment we met, my heart knew it had found its home.</li> 
+    <li>🌹 Every message, every laugh, every moment with you feels like magic.</li> 
+    <li>🌍 Distance means so little when someone means so much.</li> 
+    <li>💖 One day, we’ll look back and smile, knowing this was the beginning of forever.</li> 
+   </ul> 
+  </div> 
+  <div class="card"> 
+   <h2>Gallery 📸</h2> 
+   <div class="gallery"> 
+    <div><a href="#img1"><img src="https://files.catbox.moe/n62ear.jpeg"></a><div class="caption">You, so lovely 💖</div></div> 
+    <div><a href="#img2"><img src="https://files.catbox.moe/iheutt.jpeg"></a><div class="caption">My forever crush 😍</div></div> 
+    <div><a href="#img3"><img src="https://files.catbox.moe/1v92j1.jpeg"></a><div class="caption">Our love in pictures 💫</div></div> 
+    <div><a href="#img4"><img src="https://files.catbox.moe/okfjgu.jpeg"></a><div class="caption">Yours. Always. Forever. 💕</div></div> 
+    <div><a href="#img5"><img src="https://files.catbox.moe/n3tays.jpeg"></a><div class="caption">Your smile lights my world 🌟</div></div>
+    <div><a href="#img6"><img src="https://files.catbox.moe/7decad.jpeg"></a><div class="caption">My heart belongs to you ❤️</div></div>
+    <div><a href="#img7"><img src="https://files.catbox.moe/uungbr.jpeg"></a><div class="caption">Beautiful inside and out 💐</div></div>
+    <div><a href="#img8"><img src="https://files.catbox.moe/qwqrpq.jpeg"></a><div class="caption">The love of my life 💖</div></div>
+   </div> 
+  </div> 
+
+  <!-- Lightboxes -->
+  <div id="img1" class="lightbox"><a href="#" class="close-lightbox">×</a><img src="https://files.catbox.moe/n62ear.jpeg"></div> 
+  <div id="img2" class="lightbox"><a href="#" class="close-lightbox">×</a><img src="https://files.catbox.moe/iheutt.jpeg"></div> 
+  <div id="img3" class="lightbox"><a href="#" class="close-lightbox">×</a><img src="https://files.catbox.moe/1v92j1.jpeg"></div> 
+  <div id="img4" class="lightbox"><a href="#" class="close-lightbox">×</a><img src="https://files.catbox.moe/okfjgu.jpeg"></div> 
+  <div id="img5" class="lightbox"><a href="#" class="close-lightbox">×</a><img src="https://files.catbox.moe/n3tays.jpeg"></div>
+  <div id="img6" class="lightbox"><a href="#" class="close-lightbox">×</a><img src="https://files.catbox.moe/7decad.jpeg"></div>
+  <div id="img7" class="lightbox"><a href="#" class="close-lightbox">×</a><img src="https://files.catbox.moe/uungbr.jpeg"></div>
+  <div id="img8" class="lightbox"><a href="#" class="close-lightbox">×</a><img src="https://files.catbox.moe/qwqrpq.jpeg"></div>
+
+  <div class="card"> 
+   <h2>Special Video❤️😘 🎥</h2>
+   <video controls>
+     <source src="https://files.catbox.moe/jdvtu8.mp4" type="video/mp4">
+   </video>
+   <div class="caption">Like Jidenna sings… I’ll run to you, always 🦌❤️</div>
+  </div>
+
+  <div class="card"> 
+   <h2>Love Letters ✉️</h2> 
+   <p><em>“Every moment with you feels like home.”</em></p> 
+   <p><em>“You are my sunshine on every cloudy day.”</em></p> 
+  </div> 
+  <div class="card"> 
+   <h2>Our Playlist 🎶</h2> 
+   <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" height="80"></iframe> 
+  </div> 
+
+  <!-- Countdown Card -->
+  <div class="card">
+    <h2>Countdown to Our Anniversary 💞</h2>
+    <p id="countdown"></p>
+  </div>
+
+  <div class="card"> 
+   <h2>Days Together 🗓️</h2> 
+   <p id="daysTogether"></p> 
+  </div> 
+
+  <!-- Updated Open When Card -->
+  <div class="card"> 
+   <h2>Open when</h2> 
+   <button id="btnSad">Click when sad 😢</button> 
+   <button id="btnMiss">Click when missing me 💌</button> 
+   <button id="btnSleep">Click when can’t sleep 🌙</button> 
+  </div> 
+
+  <!-- Restored Secret Message Card -->
+  <div class="card">
+    <h2>Secret Message 🔒</h2>
+    <button id="secretBtn">Click for a Sweet Secret🤭</button>
+  </div>
+
+  <footer style="margin-top: 50px; font-size: 0.9rem; color: #6b7280;">
+    Made with ❤️ for Fina — Forever yours. 
+  </footer> 
+
+  <script>
+    const startDate = new Date("2025-07-17");
+    const today = new Date();
+    const diffTime = Math.abs(today - startDate);
+    const daysTogether = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    document.getElementById("daysTogether").textContent = `We've been together for ${daysTogether} days 🥰`;
+
+    const container = document.getElementById('falling-hearts-container');
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'falling-heart';
+      heart.textContent = '💗';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+      heart.style.opacity = Math.random();
+      container.appendChild(heart);
+    }
+
+    // Open When buttons
+    document.getElementById("btnSad").addEventListener("click", function () {
+      alert("Beb, every tear you shed is a piece of my heart crying with you. I wish I could be there to hold you close until the sadness melts away. You’re never alone, not even for a second. ❤️");
+    });
+    document.getElementById("btnMiss").addEventListener("click", function () {
+      alert("I miss you more than words can ever say. Every moment without you is a countdown until I can see your smile again. You’re in my thoughts always, beb 💌");
+    });
+    document.getElementById("btnSleep").addEventListener("click", function () {
+      alert("Close your eyes, my love. Imagine my arms wrapped around you, my voice whispering sweet dreams in your ear. Sleep peacefully knowing my heart beats for you. 🌙❤️");
+    });
+
+    // Secret Message (restored)
+    document.getElementById("secretBtn").addEventListener("click", function () {
+      alert("You are my today and all of my tomorrows. If I could give you one thing, it would be the ability to see yourself through my eyes — only then would you realize how deeply, madly, and completely I love you. ❤️");
+    });
+
+    // Countdown to Anniversary
+    const anniversaryDate = new Date("2026-07-17");
+    function updateCountdown() {
+      const now = new Date();
+      const diff = anniversaryDate - now;
+      
+      if (diff <= 0) {
+        document.getElementById("countdown").textContent = "Happy Anniversary, my love! ❤️";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").textContent =
+        `${days} days, ${hours} hours, ${minutes} minutes & ${seconds} seconds until our anniversary 💖`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script> 
+ </body>
+                                                                              </html>
